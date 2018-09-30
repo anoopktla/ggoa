@@ -1,0 +1,200 @@
+<div class="row" data-ng-init="getEmployee()">
+    <div class="col-sm-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Personal details
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+
+                    <td class="col-sm-3">Name</td>
+                    <td class="col-sm-3">{{villa.name.salutation}} {{villa.name.firstName}}
+                        {{villa.name.lastName}}
+                    </td>
+                    </tr>
+
+                    <tr>
+                        <td class="col-sm-3">Date of birth</td>
+                        <td class="col-sm-3">{{villa.personalDetails.dob}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Father's name</td>
+                        <td class="col-sm-3">{{villa.personalDetails.nameOfFather.salutation}}
+                            {{villa.personalDetails.nameOfFather.firstName}} {{
+                            villa.personalDetails.nameOfFather.lastName}}
+                        </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Address
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-3">Street address 1</td>
+                        <td class="col-sm-3">{{villa.address.streetAddress1}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Street address 2</td>
+                        <td class="col-sm-3">{{villa.address.streetAddress2}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">City</td>
+                        <td class="col-sm-3">{{villa.address.city}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">State</td>
+                        <td class="col-sm-3">{{villa.address.state.name}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Country</td>
+                        <td class="col-sm-3">{{villa.address.country.name}}</td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Employment details
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-3">Employee Id</td>
+                        <td class="col-sm-3">{{villa.name}}</td>
+                    </tr>
+                    <tr>
+                    <tr>
+                        <td class="col-sm-3">Designation</td>
+                        <td class="col-sm-3">{{villa.employmentDetails.designation.designation}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Date of joining</td>
+                        <td class="col-sm-3">{{villa.employmentDetails.dateOfJoining}}</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Compensation details
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-3">PAN#</td>
+                        <td class="col-sm-3">{{villa.employmentDetails.compensationDetails.pan}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Bank name</td>
+                        <td class="col-sm-3">{{villa.employmentDetails.compensationDetails.bankName}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Bank account number</td>
+                        <td class="col-sm-3">{{villa.employmentDetails.compensationDetails.accountNumber}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Payment date</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.payDate}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Basic pay</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.basicPay}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">HRA</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.hra}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Special allowance</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.specialAllowance}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Conveyance</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.conveyance}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Gross salary</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.grossSalary}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">TDS</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.tds}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Total deduction</td>
+                        <td class="col-sm-3">{{ villa.employmentDetails.compensationDetails.totalDeduction}}</td>
+                    </tr>
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">Leave details
+            </div>
+            <div class="panel-body">
+                <table class="table table-bordered">
+                    <tbody>
+                    <tr>
+                        <td class="col-sm-3">Leave balance</td>
+                        <td class="col-sm-3">{{villa.leaveDetails.leaveBalance}}</td>
+                    </tr>
+                    <tr>
+                        <td class="col-sm-3">Leave taken</td>
+                        <td class="col-sm-3">{{villa.leaveDetails.leaveTaken}}</td>
+                    </tr></tbody></table>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">Salary certificate
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="input-group date" data-provide="datepicker"  data-date-format="mm/yyyy" startView= "month" >
+                                <input type="datetime"  id="reportDate"class="form-control" data-date-format="MM/yyyy" ng-model="reportDate"/>
+                                <div class="input-group-addon">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div><div class="col-sm-3"> <button class="btn btn-primary" ng-click="generateReport();">Generate</button></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+
+                    <a href="#/update?id={{villa.id}}&mode=update"><button class="btn btn-primary" >update</button> </a>
+            </div>
+              <div class="col-sm-2">
+                    <button type="button" class="btn btn-danger"  ng-click="deleteEmployee()">Delete</button>
+                </div>
+               <div class="col-sm-2">
+                    <button onclick="window.location.href='#/list';" class="btn btn-primary" >Cancel
+                    </button>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

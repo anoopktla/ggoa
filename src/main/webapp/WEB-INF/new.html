@@ -1,0 +1,264 @@
+<div class="panel panel-default" data-ng-init="getAllStaticValues();getEmployee();">
+    <div class="panel-heading">Personal details
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">Name:
+            </div>
+            <div class="col-sm-3">
+                <select id="salutation" ng-model="villa.name.salutation" class="form-control"
+                        ng-options="salutation for salutation in salutations track by salutation">
+                    <option value="">select one</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="firstName" ng-model="villa.name.firstName" class="form-control"/>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="lastName" ng-model="villa.name.lastName" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3">
+                Employee id:
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="name" ng-model="villa.name" class="form-control"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">Date of birth</div>
+            <div class="col-sm-3">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="datetime" ng-model="villa.personalDetails.dob" class="form-control"/>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-3"> Father's name:</div>
+            <div class="col-sm-3">
+
+                <select id="fathersSalutation" ng-model="villa.personalDetails.nameOfFather.salutation"
+                        class="form-control"
+                        ng-options="salutation for salutation in salutations track by salutation">
+                    <option value="">select one</option>
+                </select>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" id="fathersFirstName"
+                       ng-model="villa.personalDetails.nameOfFather.firstName" class="form-control"/></div>
+            <div class="col-sm-3">
+                <input type="text" id="fathersLastName"
+                       ng-model="villa.personalDetails.nameOfFather.lastName" class="form-control"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Address</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                Street address 1
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.address.streetAddress1"
+                                         class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Street address 2
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.address.streetAddress2"
+                                         class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                City
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.address.city" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                State
+            </div>
+            <div class="col-sm-3">
+                <select ng-model="villa.address.state" class="form-control"
+                        ng-options="state.name for state in states track by state.key">
+                    <option value="">select one</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Country
+            </div>
+            <div class="col-sm-3">
+                <select type="text" ng-model="villa.address.country" class="form-control"
+                        ng-options="country.name for country in countries track by country.key">
+                    <option value="">select one</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Pin code
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.address.pinCode" class="form-control">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Employment details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                Designation
+            </div>
+            <div class="col-sm-3">
+                <select ng-model="villa.employmentDetails.designation" class="form-control"
+                        ng-options="designation.designation for designation in designations track by designation.description">
+                    <option value="">select one</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Date of joining
+            </div>
+            <div class="col-sm-3">
+
+                <!--<input type="datetime" ng-model="villa.employmentDetails.dateOfJoining">-->
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="datetime" ng-model="villa.employmentDetails.dateOfJoining"
+
+                           class="form-control"/>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">Compensation details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-sm-3">
+                PAN
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.employmentDetails.compensationDetails.pan"
+                                         class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Bank name
+            </div>
+            <div class="col-sm-3"><input type="text" ng-model="villa.employmentDetails.compensationDetails.bankName"
+                                         class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Account number
+            </div>
+            <div class="col-sm-3"><input type="text"
+                                         ng-model="villa.employmentDetails.compensationDetails.accountNumber"
+                                         class="form-control">
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-sm-3">Joining date:</div>
+            <div class="col-sm-3">
+                <div class="input-group date" data-provide="datepicker">
+                    <input type="datetime" ng-model="villa.employmentDetails.compensationDetails.payDate"
+                           class="form-control" class="form-control"/>
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-th"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                Basic pay
+            </div><div class="col-sm-3">
+            <input type="text" ng-model="villa.employmentDetails.compensationDetails.basicPay" class="form-control">
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-3">
+                HRA
+            </div><div class="col-sm-3">
+            <input type="text" ng-model="villa.employmentDetails.compensationDetails.hra" class="form-control">
+        </div>
+        </div><div class="row">
+        <div class="col-sm-3">
+            Conveyance
+        </div><div class="col-sm-3">
+        <input type="text" ng-model="villa.employmentDetails.compensationDetails.conveyance" class="form-control">
+    </div>
+    </div><div class="row">
+        <div class="col-sm-3">
+            Special Allowance
+        </div><div class="col-sm-3">
+        <input type="text" ng-model="villa.employmentDetails.compensationDetails.specialAllowance" class="form-control">
+    </div>
+    </div><div class="row">
+        <div class="col-sm-3">
+            Gross salary
+        </div><div class="col-sm-3">
+        <input type="text" ng-model="villa.employmentDetails.compensationDetails.grossSalary" class="form-control">
+    </div>
+    </div><div class="row">
+        <div class="col-sm-3">
+            TDS
+        </div><div class="col-sm-3">
+        <input type="text" ng-model="villa.employmentDetails.compensationDetails.tds" class="form-control">
+    </div>
+    </div><div class="row">
+        <div class="col-sm-3">
+            Total deduction
+        </div><div class="col-sm-3">
+        <input type="text" ng-model="villa.employmentDetails.compensationDetails.totalDeduction" class="form-control">
+    </div>
+    </div>
+
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Leave details</div>
+    <div class="panel-body">
+       <div class="row">
+           <div class="col-sm-3">Leave balance : </div><div class="col-sm-3"> <input class="form-control" type="text" ng-model="villa.leaveDetails.leaveBalance"></div>
+       </div>
+        <div class="row">
+            <div class="col-sm-3"> Leave taken : </div><div class="col-sm-3"><input type="text" class="form-control" ng-model="villa.leaveDetails.leaveTaken"></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row"><div class="col-lg-1">
+    <button ng-click="addEmployee();" class="btn btn-primary">Save
+    </button></div><div class="col-lg-1">
+    <button onclick="window.location.href='#/list';" class="btn btn-primary">Cancel
+    </button></div>
+</div>
