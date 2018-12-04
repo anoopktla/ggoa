@@ -4,53 +4,53 @@ app.config(function($routeProvider) {
 
   .when('/', {
     templateUrl : 'index.html',
-    controller  : 'EmployeeController'
+    controller  : 'VillaController'
   })
 
   .when('/list', {
-    templateUrl : 'list',
-    controller  : 'EmployeeController'
+    templateUrl : 'villalist',
+    controller  : 'VillaController'
   })
 
   .when('/viewEmployeeDetails', {
     templateUrl : 'viewEmployeeDetails',
-    controller  : 'EmployeeController'
+    controller  : 'VillaController'
   })
   .when('/new', {
       templateUrl : 'new',
-      controller  : 'EmployeeController'
+      controller  : 'VillaController'
     })
   .when('/update', {
       templateUrl : 'new',
-      controller  : 'EmployeeController',
+      controller  : 'VillaController',
 
    })
    .otherwise({redirectTo: '/'});
 });
-app.service('EmployeeCRUDService', [ '$http', function($http) {
+app.service('VillaCRUDService', [ '$http', function($http) {
 
-    this.getEmployee = function getEmployee(employeeId) {
+    this.getVilla = function getVilla(villaId) {
         return $http({
             method : 'GET',
-            url : 'employees/' + employeeId
+            url : 'villas/' + villaId
         });
     }
-    this.addEmployee = function addEmployee(employee) {
+    this.addVilla = function addVilla(villa) {
 
         return $http({
             method : 'POST',
-            url : 'employees',
+            url : 'villas',
             data : {
-            name :employee.name,
-            employeeId :employee.employeeId,
-            address: employee.address,
+            name :villa.name,
+            villaId :villa.villaId,
+            address: villa.address,
             employmentDetails: employee.employmentDetails,
             personalDetails : employee.personalDetails,
             leaveDetails : employee.leaveDetails
             }
         });
     }
-    this.updateEmployee = function updateEmployee(employee) {
+/*    this.updatee = function updateEmployee(employee) {
         return $http({
             method : 'PUT',
             url : 'employees/'+employee.id,
@@ -100,58 +100,58 @@ app.service('EmployeeCRUDService', [ '$http', function($http) {
       method : 'GET',
       url : 'countries'
       });
-                                                }
+                                                }*/
 } ]);
-app.controller('EmployeeController', ['$scope','EmployeeCRUDService','$routeParams','$location',
- function ($scope,EmployeeCRUDService, $routeParams,$location) {
- $scope.getAllEmployees = function () {
-           EmployeeCRUDService.getAllEmployees()
+app.controller('VillaController', ['$scope','VillaCRUDService','$routeParams','$location',
+ function ($scope,VillaCRUDService, $routeParams,$location) {
+ $scope.getAllVillas = function () {
+           VillaCRUDService.getAllVillas()
              .then(function success(response) {
-                 $scope.employees = response.data;
+                 $scope.villas = response.data;
                  $scope.message='';
                  $scope.errorMessage = '';
                  },
              function error (response) {
                  $scope.message='';
-                 $scope.errorMessage = 'Error getting employees!';
+                 $scope.errorMessage = 'Error getting villas!';
              });
 
        };
-       $scope.getEmployee = function () {
-                 EmployeeCRUDService.getEmployee($routeParams.id)
+       $scope.getVilla = function () {
+                 VillaCRUDService.getVilla($routeParams.id)
                                      .then(function success(response) {
-                        $scope.employee = response.data;
+                        $scope.villa = response.data;
                         $scope.monthName=$routeParams.monthName;
                         $scope.message='';
                         $scope.errorMessage = '';
                         },
                     function error (response) {
                         $scope.message='';
-                        $scope.errorMessage = 'Error getting employees!';
+                        $scope.errorMessage = 'Error getting villas!';
                     });
 
        };
-       $scope.addEmployee = function () {
+       $scope.addVilla = function () {
 
 
                if(!$routeParams.mode){
 
-              EmployeeCRUDService.addEmployee($scope.employee)
+              VillaCRUDService.addVilla($scope.villa)
                           .then(function success(response) {
-                               $scope.employee = response.data;
+                               $scope.villa = response.data;
                               $scope.message='';
                               $scope.errorMessage = '';
-                              $location.path('viewEmployeeDetails?id=');
+                              $location.path('viewVillaDetails?id=');
                               },
                            function error (response) {
                                $scope.message='';
-                              $scope.errorMessage = 'Error adding employee!';
+                              $scope.errorMessage = 'Error adding villa!';
                            });
 }else {
 
- EmployeeCRUDService.updateEmployee($scope.employee)
+ VillaCRUDService.updateVilla($scope.villa)
                           .then(function success(response) {
-                               $scope.employee = response.data;
+                               $scope.villa = response.data;
                               $scope.message='';
                               $scope.errorMessage = '';
                               $location.path('list');
@@ -163,10 +163,10 @@ app.controller('EmployeeController', ['$scope','EmployeeCRUDService','$routePara
 }
 
               };
-              $scope.deleteEmployee = function () {
+              $scope.deleteVilla = function () {
 
 
-                            EmployeeCRUDService.deleteEmployee($scope.employee.id)
+                            VillaCRUDService.deleteVilla($scope.villa.id)
                                         .then(function success(response) {
 
                                             $scope.message='';
@@ -175,7 +175,7 @@ app.controller('EmployeeController', ['$scope','EmployeeCRUDService','$routePara
                                             },
                                          function error (response) {
                                              $scope.message='';
-                                            $scope.errorMessage = 'Error deleting employee!';
+                                            $scope.errorMessage = 'Error deleting villa!';
                                          });
 
                             };
@@ -222,7 +222,7 @@ app.controller('EmployeeController', ['$scope','EmployeeCRUDService','$routePara
                                           $scope.message='';
                                           $scope.errorMessage = 'Error getting salutations!';
                                       });
-       EmployeeCRUDService.getAllCountries()
+       VillaCRUDService.getAllCountries()
        .then(function success(response) {
        $scope.countries = response.data;
         $scope.message='';
@@ -232,7 +232,7 @@ app.controller('EmployeeController', ['$scope','EmployeeCRUDService','$routePara
            $scope.message='';
             $scope.errorMessage = 'Error getting salutations!';
             });
-       EmployeeCRUDService.getAllStates()
+       VillaCRUDService.getAllStates()
        .then(function success(response) {
        $scope.states = response.data;
        $scope.message='';

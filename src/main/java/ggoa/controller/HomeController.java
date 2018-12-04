@@ -18,7 +18,7 @@ public class HomeController {
 
     @RequestMapping("/list")
     public String list() {
-        return "employeelist";
+        return "villalist";
     }
 
     @RequestMapping("/viewEmployeeDetails")
