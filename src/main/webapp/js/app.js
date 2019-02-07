@@ -28,7 +28,12 @@ app.config(function($routeProvider) {
    .otherwise({redirectTo: '/'});
 });
 app.service('VillaCRUDService', [ '$http', function($http) {
-
+ this.getAllVillas = function getAllVillas() {
+        return $http({
+            method : 'GET',
+            url : 'villas/'
+        });
+    }
     this.getVilla = function getVilla(villaId) {
         return $http({
             method : 'GET',
@@ -50,57 +55,7 @@ app.service('VillaCRUDService', [ '$http', function($http) {
             }
         });
     }
-/*    this.updatee = function updateEmployee(employee) {
-        return $http({
-            method : 'PUT',
-            url : 'employees/'+employee.id,
-            data : {
-                name :employee.name,
-                            employeeId :employee.employeeId,
-                            address: employee.address,
-                            employmentDetails: employee.employmentDetails,
-                            personalDetails : employee.personalDetails,
-                            leaveDetails : employee.leaveDetails
 
-            }
-        });
-    }
-    this.deleteEmployee = function deleteEmployee(id) {
-        return $http({
-            method : 'DELETE',
-            url : 'employees/' + id
-        })
-    }
-    this.getAllEmployees = function getAllEmployees() {
-        return $http({
-            method : 'GET',
-            url : 'employees'
-        });
-    }
-    this.getAllDesignations = function getAllDesignations() {
-            return $http({
-                method : 'GET',
-                url : 'designations'
-            });
-        }
-        this.getAllSalutations = function getAllSalutations() {
-                    return $http({
-                        method : 'GET',
-                        url : 'salutations'
-                    });
-                }
-         this.getAllStates = function getAllStates() {
-                            return $http({
-                                method : 'GET',
-                                url : 'states'
-                            });
-                        }
-     this.getAllCountries = function getAllStates() {
-      return $http({
-      method : 'GET',
-      url : 'countries'
-      });
-                                                }*/
 } ]);
 app.controller('VillaController', ['$scope','VillaCRUDService','$routeParams','$location',
  function ($scope,VillaCRUDService, $routeParams,$location) {

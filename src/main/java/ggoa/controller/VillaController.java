@@ -1,6 +1,7 @@
 package ggoa.controller;
 
 import ggoa.exception.ResourceNotFoundException;
+import ggoa.model.Transaction;
 import ggoa.model.Villa;
 import ggoa.dao.VillaRepository;
 import ggoa.util.NumberFormatUtil;
@@ -10,7 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 public class VillaController {
@@ -21,13 +24,24 @@ public class VillaController {
     @GetMapping("/villas")
     public List<Villa> getAlVillas() {
 
-        return villaRepository.findAll();
+        List<Villa> villas = villaRepository.findAll();
+        villas.forEach(villa -> {
+            if (villa.getTransactions() != null) {
+                villa.setAccountBalance(villa.getTransactions().values()
+                        .stream().mapToLong(Transaction::getBalance).sum());
+            }else {
+                villa.setAccountBalance(0L);
+            }
+        });
+        return villas;
     }
+
     @GetMapping("/villas/{id}")
     public Optional<Villa> getVillasById(@PathVariable(value = "id") String id) {
         return villaRepository.findById(id);
 
     }
+
     @PostMapping("/villas")
     public Villa createVillas(@Valid @RequestBody Villa villa) {
         return villaRepository.save(villa);

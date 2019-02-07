@@ -3,7 +3,6 @@ package ggoa.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.Map;
 
 @Document(collection = "Villas")
@@ -13,7 +12,10 @@ public class Villa {
 
     private String number;
     private String name;
-    private Map<String,BigDecimal> balance;
+    private String email;
+    private String phoneNumber;
+    private Long accountBalance;
+    private Map<String,Transaction> transactions;
 
 
     public String getNumber() {
@@ -42,11 +44,35 @@ public class Villa {
         this.name = name;
     }
 
-    public Map<String, BigDecimal> getBalance() {
-        return balance;
+    public Map<String, Transaction> getTransactions() {
+        return transactions;
     }
 
-    public void setBalance(Map<String, BigDecimal> balance) {
-        this.balance = balance;
+    public void setTransactions(Map<String, Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public Long getAccountBalance() {
+        return accountBalance;
+    }
+
+    public void setAccountBalance(Long accountBalance) {
+        this.accountBalance = accountBalance;
     }
 }

@@ -1,21 +1,25 @@
-<table class="table table-bordered"  data-ng-init="getAllEmployees()">
+<table class="table table-bordered"  data-ng-init="getAllVillas()">
     <thead>
     <tr>
         <th>#</th>
         <th>Villa  number</th>
         <th>Owner's name</th>
-        <th>Details</th>
+        <th>Phone</th>
+        <th>email</th>
+        <th>outstanding</th>
         <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr  ng-repeat="villa in employees" class="panel panel-default">
+    <tr  ng-repeat="villa in villas" class="panel panel-default">
         <td class="col-sm-1">{{ $index + 1 }}</td>
-        <td class="col-sm-3" >{{villa.name}}</td>
-        <td class="col-sm-3">{{villa.name.salutation}} {{villa.name.firstName}} {{villa.name.lastName}}</td>
-        <td class="col-sm-3">{{villa.employmentDetails.designation.designation}} </td>
+        <td class="col-sm-3" >{{villa.number}}</td>
+        <td class="col-sm-3">{{villa.name}}</td>
+        <td class="col-sm-3">{{villa.email}} </td>
+        <td class="col-sm-3">{{villa.phoneNumber}} </td>
+        <td class="col-sm-3">{{villa.accountBalance}} </td>
 
-        <td> <a href="#/viewEmployeeDetails?id={{villa.id}}">view </a></td>
+        <td> <a href="#/getVilla({{villa.id}})">submit </a></td>
 
     </tr>
     </tbody>

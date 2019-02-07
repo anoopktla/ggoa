@@ -16,7 +16,7 @@ public class HomeController {
         return "/reports/report";
     }
 
-    @RequestMapping("/list")
+    @RequestMapping("/villalist")
     public String list() {
         return "villalist";
     }
