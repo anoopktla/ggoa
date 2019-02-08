@@ -46,12 +46,10 @@ app.service('VillaCRUDService', [ '$http', function($http) {
             method : 'POST',
             url : 'villas',
             data : {
-            name :villa.name,
-            villaId :villa.villaId,
-            address: villa.address,
-            employmentDetails: employee.employmentDetails,
-            personalDetails : employee.personalDetails,
-            leaveDetails : employee.leaveDetails
+             number: villa.number,
+                name:villa.name,
+                email: villa.email,
+                phoneNumber: villa.phoneNumber,
             }
         });
     }
