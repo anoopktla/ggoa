@@ -15,6 +15,7 @@ public class Villa {
     private String email;
     private String phoneNumber;
     private Long accountBalance;
+    //todo make transaction a list of transactions.
     private Map<String,Transaction> transactions;
 
 
