@@ -12,8 +12,8 @@ app.config(function($routeProvider) {
     controller  : 'VillaController'
   })
 
-  .when('/viewEmployeeDetails', {
-    templateUrl : 'viewEmployeeDetails',
+  .when('/details', {
+    templateUrl : 'details',
     controller  : 'VillaController'
   })
   .when('/new', {
@@ -52,6 +52,19 @@ app.service('VillaCRUDService', [ '$http', function($http) {
                 phoneNumber: villa.phoneNumber,
             }
         });
+    }
+
+    this.addTxn = function addTxn(txn){
+     return $http({
+                method : 'POST',
+                url : 'txn',
+                data : {
+                 balance: txn.amount,
+                 transactionType:txn.type,
+                 id:txn.villaId,
+
+                }
+            });
     }
 
 } ]);
@@ -132,7 +145,28 @@ app.controller('VillaController', ['$scope','VillaCRUDService','$routeParams','$
                                          });
 
                             };
+/*test*/
+  $scope.addTxn = function () {
 
+
+
+              VillaCRUDService.addTxn($scope.txn)
+                          .then(function success(response) {
+                               $scope.employee = response.data;
+                              $scope.message='';
+                              $scope.errorMessage = '';
+                              $location.path('list');
+                              },
+                           function error (response) {
+                               $scope.message='';
+                              $scope.errorMessage = 'Error adding txn!';
+                           });
+
+
+
+
+              };
+/*test*/
          $scope.generateReport = function (){
 
          const monthNames = ["January", "February", "March", "April", "May", "June",

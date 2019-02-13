@@ -1,5 +1,7 @@
 package ggoa.util;
 
+import ggoa.model.Transaction;
+import ggoa.model.Villa;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -11,7 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 public class PdfUtil {
-    public static InputStream getPdf() throws Exception {
+    public static InputStream getPdf(Villa villa, Transaction txn) throws Exception {
         PDDocument document = new PDDocument();
         PDPage page = new PDPage();
         document.addPage(page);
@@ -27,6 +29,10 @@ public class PdfUtil {
         contentStream.setFont(font, 12);
         contentStream.moveTextPositionByAmount(100, 700);
         contentStream.drawString("Hello World");
+        contentStream.moveTextPositionByAmount(100, 750);
+        contentStream.drawString("Dear "+villa.getName()+" monthly maintainance fee for your "+villa.getNumber());
+        contentStream.moveTextPositionByAmount(100, 800);
+        contentStream.drawString("of amount "+txn.getBalance()+" received on "+txn.getTimeStamp()+"Thanks");
         contentStream.endText();
 
 // Make sure that the content stream is closed:

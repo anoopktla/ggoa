@@ -1,0 +1,38 @@
+    <div class="panel" data-ng-init="getVilla()">
+        <h5>Details for villa # {{villa.number}} ,  {{villa.name}}</h5>
+        <div class="row">
+            account balance : {{villa.accountBalance}}
+        </div>
+        <div class="row">
+            <div class="col-sm-3">type :
+            </div>
+
+            <div class="col-sm-3">
+                <select ng-model="txn.type">
+                    <option value="MONTHLY" selected>MONTHLY</option>
+                    <option value="CREDIT">CR</option>
+                    <option value="DEBIT">DR</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-sm-3">Amount :
+            </div>
+
+            <div class="col-sm-3">
+                <input type="text" id="amount" ng-model="txn.amount"  class="form-control"/>
+            </div>
+
+           <!-- <input type="text" id="villaId" ng-model="txn.villaId" ng-init="txn.villaId=villa.id"   value="{{villa.id}}" class="form-control"/>-->
+            <input type="hidden" ng-bind="txn.villaId=villa.id" value="{{villa.id}}">
+        </div>
+    </div>
+</div>
+
+    <button onclick="window.location.href='#/list';" class="btn btn-primary">Cancel
+    </button>
+    <button type="button" ng-click="addTxn();" class="btn btn-primary">Save changes</button>
+
+</div>
+</div>

@@ -51,24 +51,5 @@ public class ResourcesController {
         return countriesRepository.findAll();
     }
 
-    @RequestMapping(value = "/pdf", method = RequestMethod.GET, produces = MediaType.APPLICATION_PDF_VALUE)
-    public ResponseEntity<InputStreamResource> getAsPdf() throws Exception {
 
-        InputStream in = PdfUtil .getPdf();
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_ORIGIN, "*");
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_METHODS, "GET, POST, PUT");
-        headers.add(HttpHeaders.ACCESS_CONTROL_ALLOW_HEADERS, HttpHeaders.CONTENT_TYPE);
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "filename=" + "adv.pdf");
-        headers.add(HttpHeaders.CACHE_CONTROL, "no-cache, no-store, must-revalidate");
-        headers.add(HttpHeaders.PRAGMA, "no-cache");
-        headers.add(HttpHeaders.EXPIRES, "0");
-        headers.setContentLength(in.available());
-        ResponseEntity<InputStreamResource> response = new ResponseEntity<>(
-                new InputStreamResource(in), headers, HttpStatus.OK);
-        in.close();
-
-        return response;
-    }
 }
