@@ -99,7 +99,7 @@ public class EmailUtil {
                 message.setContent(multipart);
                 message.setFrom(new InternetAddress(emailUserName, "GGOA"));
                 message.setReplyTo(InternetAddress.parse(emailUserName, false));
-                message.setSubject("GGOA Monthly maintainance receipt for "+txn.getTimeStamp());
+                message.setSubject("GGOA Monthly maintainance fee receipt for "+txn.getTimeStamp());
                 message.setSentDate(new Date());
                 message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(toEmail, false));
                 message.setRecipients(Message.RecipientType.CC,InternetAddress.parse("anoopktla@gmail.com",false));
